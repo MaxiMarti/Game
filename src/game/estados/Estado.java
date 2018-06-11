@@ -5,13 +5,19 @@
  */
 package game.estados;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author aguan
  */
 public interface Estado {
     
-    public void init();
-    public void enter();
+    public void inic();
+    public void entrar();
+    public void tick();
+    public void render(Graphics g);
+    public void salir();
+    public String getNombre();
     
 }
