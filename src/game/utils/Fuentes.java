@@ -5,7 +5,7 @@
  */
 package game.utils;
 
-import game.Pengu;
+import game.Juego;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -25,19 +25,19 @@ public class Fuentes {
     
     public static void drawString(Graphics g, Font f, Color c, String texto){
         FontMetrics fm = g.getFontMetrics(f);
-        int x = (Pengu.ANCHO - fm.stringWidth(texto)) / 2;              //centro horizontal
-        int y = ((Pengu.ALTO - fm.getHeight()) / 2) + fm.getAscent();   //centro vertical
+        int x = (Juego.ANCHO - fm.stringWidth(texto)) / 2;              //centro horizontal
+        int y = ((Juego.ALTO - fm.getHeight()) / 2) + fm.getAscent();   //centro vertical
         drawString(g, f, c, texto, x, y);    
     }
     public static void drawString(Graphics g, Font f, Color c, String texto, int y){
         FontMetrics fm = g.getFontMetrics(f);
-        int x = (Pengu.ANCHO - fm.stringWidth(texto)) / 2;              //centro horizontal
+        int x = (Juego.ANCHO - fm.stringWidth(texto)) / 2;              //centro horizontal
         drawString(g, f, c, texto, x, y);
         
     }
     public static void drawString(Graphics g, Font f, Color c, String texto, double x){
         FontMetrics fm = g.getFontMetrics(f);
-        int y = ((Pengu.ALTO - fm.getHeight()) / 2) + fm.getAscent();   //centro vertical
+        int y = ((Juego.ALTO - fm.getHeight()) / 2) + fm.getAscent();   //centro vertical
         drawString(g, f, c, texto, (int) x, y);
         
     }

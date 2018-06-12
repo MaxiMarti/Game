@@ -5,7 +5,7 @@
  */
 package game.renderizado.iu;
 
-import game.Pengu;
+import game.Juego;
 import game.utils.Fuentes;
 import java.awt.Color;
 import java.awt.Font;
@@ -44,7 +44,7 @@ public class Boton extends Rectangle{
         else
             Fuentes.drawString(g, fuente, color, texto, textoY);
         FontMetrics fm = g.getFontMetrics();
-        this.x = (Pengu.ANCHO - fm.stringWidth(texto)) / 2;
+        this.x = (Juego.ANCHO - fm.stringWidth(texto)) / 2;
         this.y = textoY - fm.getHeight();
         this.width = fm.stringWidth(texto);
         this.height = fm.getHeight();

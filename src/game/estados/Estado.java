@@ -5,7 +5,7 @@
  */
 package game.estados;
 
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 /**
  *
@@ -15,8 +15,8 @@ public interface Estado {
     
     public void inic();
     public void entrar();
-    public void tick();
-    public void render(Graphics g);
+    public void tick(ManagerEstados managerEstado);
+    public void render(Graphics2D g);
     public void salir();
     public String getNombre();
     

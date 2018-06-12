@@ -23,8 +23,21 @@ public class Sprite {
                                                                         spritesheet.getAlto());
     }
     
+    public Sprite(String nombreTex){
+        Textura tex = new Textura(nombreTex);
+        imagen = tex.getImagen();
+    }
+    
     public void render(Graphics g, double x, double y){
         g.drawImage(imagen, (int)x, (int) y, null);
+    }
+    
+    public int getAncho(){
+        return imagen.getWidth();
+    }
+    
+    public int getAlto(){
+        return imagen.getHeight();
     }
     
 }
