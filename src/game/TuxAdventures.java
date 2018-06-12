@@ -15,7 +15,7 @@ import javax.swing.JFrame;
  */
 public class TuxAdventures {
     public static void main(String[] args) {
-        Juego juego = new Juego();
+        final Juego juego = new Juego();
         JFrame frame = new JFrame(Juego.TITULO);
         frame.add(juego);
         frame.setSize(Juego.ANCHO, Juego.ALTO);

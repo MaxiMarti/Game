@@ -8,9 +8,8 @@ package game.estados;
 import game.Juego;
 import game.entidades.Entidad;
 import game.entidades.Jugador;
+import game.mundo.Mundo;
 import game.mundo.Tile;
-import game.renderizado.texturas.Sprite;
-import game.renderizado.texturas.SpriteSheet;
 import game.renderizado.texturas.Textura;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
@@ -23,19 +22,14 @@ public class EstadoJuego implements Estado{
 
     private ArrayList<Entidad> entidades;
     private ArrayList<Tile> tiles;
-
+    private Mundo mundo;
+    
     @Override
     public void inic() {
         entidades = new ArrayList<Entidad>();
         tiles = new ArrayList<Tile>();
-        Jugador jugador = new Jugador(new Sprite(new SpriteSheet(new Textura("Spritesheet_pengu"), 64),1,1), 100.0, 100.0, this);
-        float x = 0;
-        float y = Juego.ALTO - 74;
-        for(int i = 0; i < 10; i++){
-            tiles.add(new Tile(x, y, new Sprite(new SpriteSheet(new Textura("Spritesheet_terreno"), 64), 1, 1)));
-            x += 70;
-                    
-        }
+        mundo = new Mundo("nivel1", this);
+        
     }
 
     @Override
@@ -69,6 +63,10 @@ public class EstadoJuego implements Estado{
 
     public void agregarEntidad(Entidad entidad) {
         entidades.add(entidad);
+    }
+    
+    public void agregarTile(Tile tile){
+        tiles.add(tile);
     }
     
     public ArrayList<Tile> getTiles(){
