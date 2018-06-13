@@ -23,6 +23,7 @@ public class Jugador extends Mob{
     
     public Jugador(double x, double y, EstadoJuego estado) {
         super(new Textura(new Textura("Spritesheet_pengu"), 1, 1, 64), x, y, estado, null);
+        proyectil = (new Proyectil(new Textura(new Textura("Machete"), 1, 1, 16, 8), x, y, estado));
     
     }
     
@@ -39,7 +40,8 @@ public class Jugador extends Mob{
         if(InputTeclas.presionada(KeyEvent.VK_W))   saltar(15);
         if(InputTeclas.presionada(KeyEvent.VK_A))   dx = -5;
         if(InputTeclas.presionada(KeyEvent.VK_D))   dx = +5;
-        if(InputTeclas.presionada(KeyEvent.VK_SPACE)) disparar();
+//        if(InputTeclas.fuePresionada(KeyEvent.VK_SPACE)) disparar();
+        
         
         //if(InputTeclas.fueSoltada(KeyEvent.VK_W)    ||  InputTeclas.fueSoltada(KeyEvent.VK_S))  dy = 0;
         if(InputTeclas.fueSoltada(KeyEvent.VK_A)    ||  InputTeclas.fueSoltada(KeyEvent.VK_D))  dx = 0;
@@ -47,9 +49,10 @@ public class Jugador extends Mob{
         super.tick();
     }
 
-    private void disparar() {
-            estado.agregarEntidad(proyectil);
-    }
+//    @Override
+//    protected void disparar() {
+//        super.disparar();
+//    }
     
     protected double getY(){
         return  y;

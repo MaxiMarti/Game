@@ -10,6 +10,7 @@ import game.renderizado.texturas.Textura;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -17,8 +18,10 @@ import java.awt.Rectangle;
  */
 public class Proyectil extends Mob{
 
+        private Textura sprite;
     public Proyectil(Textura sprite, double x, double y, EstadoJuego estado) {
-        super(sprite, x, y, estado, null);
+        super(sprite = new Textura(new Textura("Machete"), 1, 1, 16, 8), x, y, estado, null);
+        this.sprite = sprite;
     }
 
     @Override
@@ -34,6 +37,10 @@ public class Proyectil extends Mob{
     
     public Rectangle getLimites(){
         return new Rectangle((int) x, (int) y, 16, 8);
+    }
+    
+    public Textura getSprite(){
+        return this.textura;
     }
     
 }

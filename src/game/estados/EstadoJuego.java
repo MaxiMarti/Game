@@ -8,6 +8,7 @@ package game.estados;
 import game.Juego;
 import game.entidades.Entidad;
 import game.entidades.Jugador;
+import game.entidades.Mob;
 import game.input.InputTeclas;
 import game.mundo.Mundo;
 import game.mundo.Tile;
@@ -25,6 +26,7 @@ public class EstadoJuego implements Estado{
     private ArrayList<Entidad> entidades;
     private ArrayList<Tile> tiles;
     private Mundo mundo;
+    private Mob mob;
     
     @Override
     public void inic() {
@@ -44,6 +46,9 @@ public class EstadoJuego implements Estado{
             System.out.println("Salir");
                 Juego.INSTANCIA.stop();
                 System.exit(0);
+        }else if(InputTeclas.fuePresionada(KeyEvent.VK_P)){
+            System.out.println("Pasando a estado de Fin");
+            managerEstado.setEstado("fin");
         }
         for(Entidad e : entidades)
             e.tick();
@@ -79,6 +84,7 @@ public class EstadoJuego implements Estado{
     public ArrayList<Tile> getTiles(){
         return tiles;
     }
+    
     
     public ArrayList<Entidad> getEntidad(){
         return entidades;

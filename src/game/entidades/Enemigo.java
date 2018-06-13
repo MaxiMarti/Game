@@ -7,6 +7,8 @@ package game.entidades;
 
 import game.estados.EstadoJuego;
 import game.renderizado.texturas.Textura;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 /**
@@ -22,6 +24,19 @@ public class Enemigo extends Mob{
         super(sprite = new Textura(new Textura("Ventana_azul"), 1, 1, 64), x, y, estado, null);
         this.sprite = sprite;
         id = 1;
+    }
+    @Override
+    public void render(Graphics2D g){
+            textura.render(g, x, y);
+             g.setColor(Color.red);
+        g.draw(getArriba());
+        g.setColor(Color.blue);
+        g.draw(getAbajo());
+        g.setColor(Color.white);
+        g.draw(getDerecha());
+        g.setColor(Color.yellow);
+        g.draw(getIzquierda());
+    
     }
 
     @Override

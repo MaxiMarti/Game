@@ -1,6 +1,5 @@
 package game;
 
-import game.estados.EstadoFin;
 import game.estados.EstadoJuego;
 import game.estados.EstadoMenu;
 import game.estados.ManagerEstados;
@@ -33,7 +32,6 @@ public class Juego extends Canvas implements Runnable {
         
         managerEstado.agregarEstado(new EstadoMenu());
         managerEstado.agregarEstado(new EstadoJuego());
-        managerEstado.agregarEstado(new EstadoFin());
         INSTANCIA = this;
     }
     

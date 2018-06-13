@@ -45,10 +45,6 @@ public class Mundo {
         for(int y = 0; y < alto; y++){
             for(int x = 0; x < ancho; x++){
                 int id = pixeles[x + y * ancho];
-                if(id == 0xFFFFFF00)
-                    new Objetivo(x * 64, y * 64, estado);
-                if(id == 0xFFFF00FF)
-                    new Enemigo(new Textura(new Textura("Ventana_azul"), 1, 1, 64), x * 64, y * 64, estado);
                 if(id == 0xFF0000FF)
                     new Jugador(x * 64, y * 64, estado);
                 if(Tile.getDesdeID(id) != null)
