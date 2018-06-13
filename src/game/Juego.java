@@ -13,7 +13,7 @@ import java.awt.image.BufferStrategy;
 
 public class Juego extends Canvas implements Runnable {
 
-    public static final String TITULO = "Pengu";
+    public static final String TITULO = "Tux's Adventures";
     public static final int ANCHO = 1280;
     public static final int ALTO = ANCHO / 4 * 3;
     
