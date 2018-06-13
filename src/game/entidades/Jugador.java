@@ -18,15 +18,17 @@ import javafx.animation.Animation;
  */
 public class Jugador extends Mob{
     
-    protected Animacion animDerecha;
-    
     public Jugador(double x, double y, EstadoJuego estado) {
-        super(new Textura(new Textura("Spritesheet_pengu"), 1, 1, 64), x, y, estado, new Animacion(4, 
-                new Textura(new Textura("Spritesheet_pengu"), 2, 1, 64),
-                new Textura(new Textura("Spritesheet_pengu"), 1, 1, 64),
-                new Textura(new Textura("Spritesheet_pengu"), 3, 1, 64),
-                new Textura(new Textura("Spritesheet_pengu"), 1, 1, 64)));
+        super(new Textura(new Textura("Spritesheet_pengu"), 1, 1, 64), x, y, estado, null);
     
+    }
+    
+    public int mirar(){
+        if(InputTeclas.fuePresionada(KeyEvent.VK_D))
+            return 1;
+        else if(InputTeclas.fuePresionada(KeyEvent.VK_A))
+            return 2;
+        else return 0;
     }
     
     @Override
@@ -34,11 +36,6 @@ public class Jugador extends Mob{
         if(InputTeclas.presionada(KeyEvent.VK_W))   saltar(15);
         if(InputTeclas.presionada(KeyEvent.VK_A)){
             dx = -5;
-            new Animacion(4, 
-                new Textura(new Textura("Spritesheet_pengu"), 2, 1, 64),
-                new Textura(new Textura("Spritesheet_pengu"), 1, 1, 64),
-                new Textura(new Textura("Spritesheet_pengu"), 3, 1, 64),
-                new Textura(new Textura("Spritesheet_pengu"), 1, 1, 64));
     
         }
         if(InputTeclas.presionada(KeyEvent.VK_D))   dx = +5;

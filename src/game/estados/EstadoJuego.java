@@ -8,10 +8,12 @@ package game.estados;
 import game.Juego;
 import game.entidades.Entidad;
 import game.entidades.Jugador;
+import game.input.InputTeclas;
 import game.mundo.Mundo;
 import game.mundo.Tile;
 import game.renderizado.texturas.Textura;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 /**
@@ -38,6 +40,10 @@ public class EstadoJuego implements Estado{
 
     @Override
     public void tick(ManagerEstados managerEstado) {
+        if(InputTeclas.fuePresionada(KeyEvent.VK_ESCAPE)){
+            System.out.println("Salir");
+                Juego.INSTANCIA.stop();
+        }
         for(Entidad e : entidades)
             e.tick();
     }

@@ -23,36 +23,51 @@ public abstract class Mob extends Entidad {
     protected boolean cayendo;
     protected boolean puedeSaltar;
     protected boolean moviendose;
+    protected boolean derecha;
     protected Animacion animDerecha;
+    protected Animacion animIzquierda;
     
     public Mob(Textura textura, double x, double y, EstadoJuego estado, Animacion anim) {
         super(textura, x, y, estado);
-        animDerecha = anim;
-        
         cayendo = true;
         gravedad = 0.5;
         maxDY = 12;
+        animDerecha = new Animacion(4, 
+                new Textura(new Textura("Spritesheet_pengu"), 2, 1, 64),
+                new Textura(new Textura("Spritesheet_pengu"), 1, 1, 64),
+                new Textura(new Textura("Spritesheet_pengu"), 3, 1, 64),
+                new Textura(new Textura("Spritesheet_pengu"), 1, 1, 64));
+        animIzquierda = new Animacion(6, 
+                new Textura(new Textura("Spritesheet_pengu"), 2, 2, 64),
+                new Textura(new Textura("Spritesheet_pengu"), 1, 2, 64),
+                new Textura(new Textura("Spritesheet_pengu"), 3, 2, 64),
+                new Textura(new Textura("Spritesheet_pengu"), 1, 2, 64));
+        
     }
+    
     
     @Override
     public void tick(){
         mover();
         caer();
-        if(dx != 0) 
-            moviendose = true;
-        else
-            moviendose = false;
-        if(moviendose)
+        derecha = dx >= 0;
+        
+        moviendose = dx != 0;
+        
+        if(moviendose && derecha)
             animDerecha.andar();
+        else if(moviendose && !derecha)
+            animIzquierda.andar();
     }
     
     @Override
     public void render(Graphics2D g){
         if(!moviendose)
             super.render(g);
-        else if(moviendose && y > dy)
+        else if(moviendose && derecha)
             animDerecha.render(g, x, y);
-        else animDerecha.render(g, x, y);
+        else if(moviendose && !derecha)
+            animIzquierda.render(g, x, y);
     }
     
     public void mover(){
@@ -93,6 +108,8 @@ public abstract class Mob extends Entidad {
         }
         return false;
     }
+    
+    
     
     protected void caer(){
         if(cayendo){

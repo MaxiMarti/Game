@@ -43,7 +43,7 @@ public class Tile {
     
     public void render(Graphics2D g){
         sprite.render(g, x, y);
-        g.setColor(Color.red);
+/*        g.setColor(Color.red);
         g.draw(getArriba());
         g.setColor(Color.blue);
         g.draw(getAbajo());
@@ -51,7 +51,7 @@ public class Tile {
         g.draw(getDerecha());
         g.setColor(Color.orange);
         g.draw(getIzquierda());
-    }
+*/    }
     
     
     

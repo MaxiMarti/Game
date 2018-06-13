@@ -1,5 +1,6 @@
 package game;
 
+import game.estados.EstadoFin;
 import game.estados.EstadoJuego;
 import game.estados.EstadoMenu;
 import game.estados.ManagerEstados;
@@ -32,6 +33,7 @@ public class Juego extends Canvas implements Runnable {
         
         managerEstado.agregarEstado(new EstadoMenu());
         managerEstado.agregarEstado(new EstadoJuego());
+        managerEstado.agregarEstado(new EstadoFin());
         INSTANCIA = this;
     }
     
@@ -52,7 +54,7 @@ public class Juego extends Canvas implements Runnable {
         g2d.translate(-6, -28);
         /////////////////////////////////////////////////////
         
-        g.setColor(Color.red);
+        g.setColor(Color.black);
         g.fillRect(0, 0, ANCHO, ALTO);
         managerEstado.render(g2d);
         

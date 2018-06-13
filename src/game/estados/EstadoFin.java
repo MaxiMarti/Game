@@ -6,8 +6,6 @@
 package game.estados;
 
 import game.Juego;
-import game.estados.Estado;
-import game.estados.ManagerEstados;
 import game.input.InputMouse;
 import game.input.InputTeclas;
 import game.renderizado.iu.Boton;
@@ -23,17 +21,16 @@ import java.awt.event.MouseEvent;
  *
  * @author aguan
  */
-public class EstadoMenu implements Estado {
-    
+public class EstadoFin implements Estado {
+
     private Boton[] opciones;
     private int seleccion; // subindice de opciones
     
     @Override
     public void inic() {
-        opciones = new Boton[3];
-        opciones[0] = new Boton ("Jugar", 200 + 0 * 80, new Font("Arial", Font.PLAIN, 32), new Font("Arial", Font.BOLD, 48), Color.white, Color.red);
-        opciones[1] = new Boton ("Opciones", 200 + 1 * 80, new Font("Arial", Font.PLAIN, 32), new Font("Arial", Font.BOLD, 48), Color.white, Color.red);
-        opciones[2] = new Boton ("Salir", 200 + 2 * 80, new Font("Arial", Font.PLAIN, 32), new Font("Arial", Font.BOLD, 48), Color.white, Color.red);
+        opciones = new Boton[2];
+        opciones[0] = new Boton ("Jugar de nuevo", 200 + 0 * 80, new Font("Arial", Font.PLAIN, 32), new Font("Arial", Font.BOLD, 48), Color.white, Color.red);
+        opciones[1] = new Boton ("Salir", 200 + 2 * 80, new Font("Arial", Font.PLAIN, 32), new Font("Arial", Font.BOLD, 48), Color.white, Color.red);
     }
 
     @Override
@@ -48,7 +45,7 @@ public class EstadoMenu implements Estado {
             System.out.println("Salir");
                 Juego.INSTANCIA.stop();
         }
-        
+            
         if(InputTeclas.fuePresionada(KeyEvent.VK_UP) || InputTeclas.fuePresionada(KeyEvent.VK_W)){
             seleccion--;
             if(seleccion < 0)
@@ -77,9 +74,6 @@ public class EstadoMenu implements Estado {
                 managerEstado.setEstado("nivel1");
                 break;
             case 1:
-                System.out.println("Opciones");
-                break;
-            case 2:
                 System.out.println("Salir");
                 Juego.INSTANCIA.stop();
                 break;
@@ -107,9 +101,6 @@ public class EstadoMenu implements Estado {
 
     @Override
     public String getNombre() {
-        return "menu";
+        return "fin";
     }
-    
 }
-
-

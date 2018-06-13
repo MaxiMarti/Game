@@ -33,7 +33,7 @@ public abstract class Entidad {
     
     public void render(Graphics2D g){
         textura.render(g, x, y);
-        g.setColor(Color.red);
+/*      g.setColor(Color.red);
         g.draw(getArriba());
         g.setColor(Color.blue);
         g.draw(getAbajo());
@@ -41,7 +41,7 @@ public abstract class Entidad {
         g.draw(getDerecha());
         g.setColor(Color.yellow);
         g.draw(getIzquierda());
-    }
+*/    }
     
     
     public Rectangle getLimites(){

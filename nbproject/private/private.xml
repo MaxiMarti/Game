@@ -4,15 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="Group 20180319-08:32:35">
             <file>file:/C:/Users/aguan/OneDrive/Documentos/NetBeansProjects/Game/src/game/entidades/Mob.java</file>
-            <file>file:/C:/Users/aguan/OneDrive/Documentos/NetBeansProjects/Game/src/game/TuxAdventures.java</file>
-            <file>file:/C:/Users/aguan/OneDrive/Documentos/NetBeansProjects/Game/src/game/estados/ManagerEstados.java</file>
-            <file>file:/C:/Users/aguan/OneDrive/Documentos/NetBeansProjects/Game/src/game/mundo/Mundo.java</file>
+            <file>file:/C:/Users/aguan/OneDrive/Documentos/NetBeansProjects/Game/src/game/estados/Estado.java</file>
+            <file>file:/C:/Users/aguan/OneDrive/Documentos/NetBeansProjects/Game/src/game/estados/EstadoMenu.java</file>
             <file>file:/C:/Users/aguan/OneDrive/Documentos/NetBeansProjects/Game/src/game/entidades/Jugador.java</file>
             <file>file:/C:/Users/aguan/OneDrive/Documentos/NetBeansProjects/Game/src/game/renderizado/texturas/Animacion.java</file>
-            <file>file:/C:/Users/aguan/OneDrive/Documentos/NetBeansProjects/Game/src/game/renderizado/texturas/Textura.java</file>
             <file>file:/C:/Users/aguan/OneDrive/Documentos/NetBeansProjects/Game/src/game/entidades/Entidad.java</file>
+            <file>file:/C:/Users/aguan/OneDrive/Documentos/NetBeansProjects/Game/src/game/Juego.java</file>
             <file>file:/C:/Users/aguan/OneDrive/Documentos/NetBeansProjects/Game/src/game/mundo/Tile.java</file>
             <file>file:/C:/Users/aguan/OneDrive/Documentos/NetBeansProjects/Game/src/game/estados/EstadoJuego.java</file>
+            <file>file:/C:/Users/aguan/OneDrive/Documentos/NetBeansProjects/Game/src/game/estados/EstadoFin.java</file>
         </group>
     </open-files>
 </project-private>
