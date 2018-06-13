@@ -43,6 +43,7 @@ public class EstadoJuego implements Estado{
         if(InputTeclas.fuePresionada(KeyEvent.VK_ESCAPE)){
             System.out.println("Salir");
                 Juego.INSTANCIA.stop();
+                System.exit(0);
         }
         for(Entidad e : entidades)
             e.tick();
@@ -77,5 +78,9 @@ public class EstadoJuego implements Estado{
     
     public ArrayList<Tile> getTiles(){
         return tiles;
+    }
+    
+    public ArrayList<Entidad> getEntidad(){
+        return entidades;
     }
 }

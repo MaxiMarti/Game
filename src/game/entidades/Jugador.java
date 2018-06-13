@@ -10,6 +10,7 @@ import game.estados.EstadoJuego;
 import game.input.InputTeclas;
 import game.renderizado.texturas.Animacion;
 import game.renderizado.texturas.Textura;
+import java.awt.Graphics2D;
 import javafx.animation.Animation;
 
 /**
@@ -17,6 +18,8 @@ import javafx.animation.Animation;
  * @author aguan
  */
 public class Jugador extends Mob{
+    
+    protected Proyectil proyectil;
     
     public Jugador(double x, double y, EstadoJuego estado) {
         super(new Textura(new Textura("Spritesheet_pengu"), 1, 1, 64), x, y, estado, null);
@@ -34,15 +37,25 @@ public class Jugador extends Mob{
     @Override
     public void tick(){
         if(InputTeclas.presionada(KeyEvent.VK_W))   saltar(15);
-        if(InputTeclas.presionada(KeyEvent.VK_A)){
-            dx = -5;
-    
-        }
+        if(InputTeclas.presionada(KeyEvent.VK_A))   dx = -5;
         if(InputTeclas.presionada(KeyEvent.VK_D))   dx = +5;
+        if(InputTeclas.presionada(KeyEvent.VK_SPACE)) disparar();
         
         //if(InputTeclas.fueSoltada(KeyEvent.VK_W)    ||  InputTeclas.fueSoltada(KeyEvent.VK_S))  dy = 0;
         if(InputTeclas.fueSoltada(KeyEvent.VK_A)    ||  InputTeclas.fueSoltada(KeyEvent.VK_D))  dx = 0;
     
         super.tick();
+    }
+
+    private void disparar() {
+            estado.agregarEntidad(proyectil);
+    }
+    
+    protected double getY(){
+        return  y;
+    }
+    
+    protected double getX(){
+        return  x;
     }
 }

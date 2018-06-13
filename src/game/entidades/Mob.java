@@ -5,6 +5,7 @@
  */
 package game.entidades;
 
+import game.Juego;
 import game.estados.EstadoJuego;
 import game.mundo.Tile;
 import game.renderizado.texturas.Animacion;
@@ -25,14 +26,14 @@ public abstract class Mob extends Entidad {
     protected boolean moviendose;
     protected boolean derecha;
     protected Animacion animDerecha;
-    protected Animacion animIzquierda;
+    protected Animacion animIzquierda;;
     
     public Mob(Textura textura, double x, double y, EstadoJuego estado, Animacion anim) {
         super(textura, x, y, estado);
         cayendo = true;
         gravedad = 0.5;
         maxDY = 12;
-        animDerecha = new Animacion(4, 
+        animDerecha = new Animacion(6, 
                 new Textura(new Textura("Spritesheet_pengu"), 2, 1, 64),
                 new Textura(new Textura("Spritesheet_pengu"), 1, 1, 64),
                 new Textura(new Textura("Spritesheet_pengu"), 3, 1, 64),
@@ -42,6 +43,7 @@ public abstract class Mob extends Entidad {
                 new Textura(new Textura("Spritesheet_pengu"), 1, 2, 64),
                 new Textura(new Textura("Spritesheet_pengu"), 3, 2, 64),
                 new Textura(new Textura("Spritesheet_pengu"), 1, 2, 64));
+        
         
     }
     
@@ -58,6 +60,11 @@ public abstract class Mob extends Entidad {
             animDerecha.andar();
         else if(moviendose && !derecha)
             animIzquierda.andar();
+    }
+    
+    public boolean muerto(){
+            
+        return false;
     }
     
     @Override
@@ -85,11 +92,13 @@ public abstract class Mob extends Entidad {
                 cayendo = false;
                 dy = 0;
                 return true;
-            }else cayendo = true;
+            }else if(y < 0) dy = 0;
+            else cayendo = true;
             if(getLimites().intersects(t.getAbajo()) && dy <= 0){
                 dy = 0;
                 return true;
-            }
+            }else if(y < 0) y = 0;
+            
         }
         return false;
     }
@@ -100,13 +109,25 @@ public abstract class Mob extends Entidad {
             if(getLimites().intersects(t.getDerecha()) && dx < 0) {
                 dx = 0;
                 return true;
-            }
+            }else if(x < 0) x = 0;
             if(getLimites().intersects(t.getIzquierda()) && dx > 0){
                 dx = 0;
                 return true;
-            }
+            }else if(x > Juego.ANCHO - 64) x = Juego.ANCHO - 64;
         }
         return false;
+    }
+    
+    protected boolean tieneColisionPeligrosa(){
+        for(int i = 0; i < estado.getEntidad().size(); i++){
+        Entidad e = estado.getEntidad().get(i);
+        if(getLimites().intersects(e.getLimites())){
+            System.out.println("Lo tocó");
+            estado.salir();
+            return true;
+        }else return false;
+            }
+            return false;
     }
     
     
